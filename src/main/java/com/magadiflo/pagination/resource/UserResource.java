@@ -20,7 +20,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(name = "/v0/api")
+@RequestMapping("/v0/api")
 public class UserResource {
 
     private final UserService userService;
@@ -34,7 +34,7 @@ public class UserResource {
                                                  @RequestParam Optional<Integer> page,
                                                  @RequestParam Optional<Integer> size) {
 
-        Page<User> userPage = this.userService.getUsers(name.orElse(""), page.orElse(5), size.orElse(10));
+        Page<User> userPage = this.userService.getUsers(name.orElse(""), page.orElse(0), size.orElse(10));
         Map<String, Page<User>> pageMap = new HashMap<>();
         pageMap.put("page", userPage);
 
