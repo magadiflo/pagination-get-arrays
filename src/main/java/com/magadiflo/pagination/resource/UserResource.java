@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 @RequiredArgsConstructor
 @RestController
@@ -32,7 +33,11 @@ public class UserResource {
     @GetMapping("/users")
     public ResponseEntity<HttpResponse> getUsers(@RequestParam Optional<String> name,
                                                  @RequestParam Optional<Integer> page,
-                                                 @RequestParam Optional<Integer> size) {
+                                                 @RequestParam Optional<Integer> size) throws InterruptedException {
+
+        //Simularemos el retraso para ver el loading en Angular.
+        //Esto se debe eliminar, solo es para probar la interfaz, lo dejaré mientras seguimos desarrollando
+        TimeUnit.SECONDS.sleep(1);
 
         Page<User> userPage = this.userService.getUsers(name.orElse(""), page.orElse(0), size.orElse(10));
         Map<String, Page<User>> pageMap = new HashMap<>();
