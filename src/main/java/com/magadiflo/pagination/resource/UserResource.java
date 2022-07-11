@@ -37,7 +37,7 @@ public class UserResource {
 
         //Simularemos el retraso para ver el loading en Angular.
         //Esto se debe eliminar, solo es para probar la interfaz, lo dejaré mientras seguimos desarrollando
-        TimeUnit.SECONDS.sleep(1);
+        //TimeUnit.SECONDS.sleep(1);
 
         //Forzamos un error en tiempo de ejecución para ver el comportamiento en Angular
         //throw new RuntimeException("Excepción forzada para la prueba");
